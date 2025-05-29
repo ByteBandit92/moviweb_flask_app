@@ -1,12 +1,15 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, abort, flash
 from datamanager.sqlite_data_manager import SQLiteDataManager
 import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Required for flashing messages
+app.secret_key = os.getenv("SECRET_KEY")  # Required for flashing messages
 data_manager = SQLiteDataManager('moviweb.db')
-omdb_api_key = "d8406326"
-
+omdb_api_key = os.getenv("OMDB_API_KEY")
+print(omdb_api_key)
 
 @app.route('/')
 def index():
@@ -159,4 +162,4 @@ def internal_error(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=5000, debug=True)

@@ -39,6 +39,7 @@ MoviWeb is a lightweight web app built with Flask and SQLite that allows users t
 ### 4. Set up environment variables
 - You can optionally use a .env file to store your OMDb API key:
 - OMDB_API_KEY=your_api_key_here
+- SECRET_KEY=SOMEKEY
 
 ### 5. Run App
 - flask run
